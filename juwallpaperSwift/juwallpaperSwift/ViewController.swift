@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         let btn = UIButton(frame: CGRectMake(100, 100, 150, 30))
         btn.backgroundColor = UIColor.blackColor()
         btn.titleLabel!.font = UIFont.systemFontOfSize(14.0)
+        btn.layer.cornerRadius = 3.0
         btn.setTitle("跳转", forState: UIControlState.Normal)
         return btn
     }()
