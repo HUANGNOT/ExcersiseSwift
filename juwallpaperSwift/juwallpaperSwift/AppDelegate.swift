@@ -12,10 +12,48 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var drawerController:MMDrawerController!
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        //创建窗口
+        let mainFrame = UIScreen.mainScreen().bounds
+        window = UIWindow(frame: mainFrame)
+        //设置视图
+        let leftViewController = LeftViewController()
+        let rightViewController = RightViewController()
+        let centerViewController = CenterViewController()
+        
+        let centerNavigationController = UINavigationController(rootViewController: centerViewController)
+        //let leftNavigationController = UINavigationController(rootViewController: leftViewController)
+        
+        drawerController = MMDrawerController(centerViewController: centerNavigationController, leftDrawerViewController: leftViewController, rightDrawerViewController: rightViewController)
+        
+        drawerController.maximumLeftDrawerWidth = Common.screenWidth * 0.70
+        //手势
+        drawerController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.All
+        drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.All
+        
+        //设置动画，这里是设置打开侧栏透明度从0到1
+        drawerController.setDrawerVisualStateBlock { (drawerController, drawerSide, percentVisible) -> Void in
+            
+            var sideDrawerViewController:UIViewController?
+            if(drawerSide == MMDrawerSide.Left){
+                sideDrawerViewController = drawerController.leftDrawerViewController
+            }
+            else{
+               sideDrawerViewController = drawerController.rightDrawerViewController
+            }
+            sideDrawerViewController?.view.alpha = percentVisible
+        }
+        
+        
+        
+        //设置根试图
+        self.window?.rootViewController = drawerController
+        //设置可见
+        window?.makeKeyAndVisible()
+
         return true
     }
 
