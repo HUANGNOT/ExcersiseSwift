@@ -11,7 +11,7 @@ import UIKit
 class ViewController: UIViewController {
 
     lazy var button:UIButton = {
-        let btn = UIButton(frame: CGRectMake(100, 100, 150, 30))
+        let btn = UIButton(frame: CGRectMake((CGRectGetWidth(self.view.frame) - 150) / 2.0, 200, 150, 30))
         btn.backgroundColor = UIColor.blackColor()
         btn.titleLabel!.font = UIFont.systemFontOfSize(14.0)
         btn.layer.cornerRadius = 3.0
