@@ -28,6 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //let leftNavigationController = UINavigationController(rootViewController: leftViewController)
         
         drawerController = MMDrawerController(centerViewController: centerNavigationController, leftDrawerViewController: leftViewController, rightDrawerViewController: rightViewController)
+        drawerController.view.backgroundColor = UIColor.whiteColor()
         
         drawerController.maximumLeftDrawerWidth = Common.screenWidth * 0.70
         //手势
