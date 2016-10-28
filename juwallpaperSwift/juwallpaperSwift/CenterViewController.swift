@@ -21,6 +21,7 @@ class CenterViewController: UIViewController {
         
         navigationItem.title = "主页"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "Done"), style: UIBarButtonItemStyle.Plain, target: self, action: #selector(CenterViewController.doneSlide))
+        //1028
     }
    
     func doneSlide(){
